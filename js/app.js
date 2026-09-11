@@ -1,8 +1,7 @@
-// Checkout destination for every "get the tracker" button. Paste the checkout URL
-// here once it exists (Stan Store, Gumroad, Shopify, Stripe link, etc.). Until then
-// the buttons scroll to the purchase section rather than linking to a dead page.
-// Fulfilment file delivered after payment: downloads/Dear PMDD Tracker.xlsx
-const CHECKOUT_URL = '';
+// Checkout destination for every "get the tracker" button.
+// The paid .xlsx is delivered securely by Payhip after purchase — it is never
+// hosted in this repository.
+const CHECKOUT_URL = 'https://payhip.com/b/wa2xu';
 document.querySelectorAll('[data-checkout-link]').forEach(a => {
   if (CHECKOUT_URL) { a.href = CHECKOUT_URL; a.target = '_blank'; a.rel = 'noopener'; }
   else { a.addEventListener('click', e => e.preventDefault()); }
