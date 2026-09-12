@@ -68,9 +68,12 @@
     .eyebrow{display:inline-flex;align-items:center;gap:10px;padding:7px 15px 7px 11px;border:1px solid var(--line-2);border-radius:99px;background:var(--surface);margin-bottom:28px;box-shadow:var(--sh-sm)}
     .eyebrow .dot{width:7px;height:7px;background:var(--sage);border-radius:50%;box-shadow:0 0 0 3px var(--sage-soft)}
     .eyebrow span{font-family:var(--ui);font-weight:600;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2)}
-    h1.headline{font-family:var(--serif);font-weight:400;font-size:82px;line-height:1.02;letter-spacing:-.02em;text-wrap:balance;margin-bottom:28px}
+    h1.headline{font-family:var(--serif);font-weight:400;font-size:clamp(52px,5.6vw,82px);line-height:1.02;letter-spacing:-.02em;text-wrap:balance;margin-bottom:28px}
     h1.headline em{font-style:italic;color:var(--sage-deep)}
     .lede{font-size:19px;line-height:1.6;color:var(--ink-2);max-width:520px;text-wrap:pretty;margin-bottom:36px}
+    .lede p{margin:0}
+    .hero-grid>*{min-width:0}
+    .hero-visual,.hero-visual img{max-width:100%;height:auto}
     .ctarow{display:flex;gap:14px;align-items:center;margin-bottom:26px;flex-wrap:wrap}
     .meta{display:flex;gap:16px;font-family:var(--ui);font-weight:500;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);align-items:center;flex-wrap:wrap}
     .meta .sep{width:3px;height:3px;border-radius:50%;background:var(--line-2)}
@@ -83,8 +86,8 @@
     .preview-chrome i:nth-child(2){background:oklch(0.82 0.05 80)}
     .preview-chrome i:nth-child(3){background:var(--sage)}
     .preview-chrome .file{margin-left:14px;font-family:var(--mono);font-size:10.5px;color:var(--ink-2);letter-spacing:.02em}
-    .preview-tabs{display:flex;gap:0;padding:0 16px;background:var(--stone);border-top:1px solid var(--line)}
-    .preview-tabs .tab{padding:9px 15px;font-family:var(--ui);font-weight:500;font-size:11.5px;color:var(--ink-3);border-top:2px solid transparent;cursor:default}
+    .preview-tabs{display:flex;gap:0;min-width:0;padding:0 16px;background:var(--stone);border-top:1px solid var(--line)}
+    .preview-tabs .tab{flex:0 1 auto;min-width:0;white-space:nowrap;padding:9px 15px;font-family:var(--ui);font-weight:500;font-size:11.5px;color:var(--ink-3);border-top:2px solid transparent;cursor:default}
     .preview-tabs .tab.on{color:var(--ink);border-top-color:var(--sage);background:var(--surface)}
     /* Faithful render of the Tracker sheet as shipped in the .xlsx */
     .xl{--xl-cream:#FFFAED;--xl-forest:#333F37;--xl-line:#E5DBC2;--xl-ink:#3D3A36;--xl-ink-2:#6B6661;--xl-good:#D1D161;--xl-okay:#FAAB94;--xl-low:#2C2C34;--xl-period:#FF7D59;--xl-foll:#FFDE94;--xl-ov:#FFBDE8;--xl-mid:#99B0ED;--xl-late:#CDDBF9;background:var(--xl-cream);font-family:var(--ui);border-top:1px solid var(--line)}
@@ -221,7 +224,7 @@
       .wrap{padding:0 28px}
       .topbar{padding:16px 28px}
       .nav{display:none}
-      h1.headline{font-size:60px}
+      h1.headline{font-size:clamp(44px,6vw,60px)}
       .hero{padding:52px 0 72px}
       .hero-ring{width:min(82vw,540px);top:0;right:-20px;opacity:.26}
       .section-head,.faq-item,.why-grid,.foot-grid{grid-template-columns:1fr;gap:36px}
@@ -302,3 +305,23 @@
 
 /* Purchase supporting line */
 .download p.dl-note{margin:16px 0 0;font-family:var(--ui);font-size:13px;letter-spacing:.02em;color:rgba(244,241,234,.6)}
+
+/* Responsive safety: never let author-set fixed box sizes break hero flow */
+.hero-grid .headline,.hero-grid .lede{width:auto!important;height:auto!important;max-width:100%}
+
+/* Hero decorative mark stays anchored to the right edge at all widths */
+.hero-grid .hero-ring{left:auto!important;top:-10px!important;right:-30px!important;width:min(66vw,880px)!important;height:auto!important}
+@media (max-width:1100px){.hero-grid .hero-ring{top:0!important;right:-20px!important;width:min(82vw,540px)!important}}
+/* Sheet tabs shrink with the card instead of clipping the last tab */
+@media (max-width:1040px){
+  .preview-tabs{padding:0 8px}
+  .preview-tabs .tab{padding:9px 8px;font-size:10.5px;letter-spacing:-.005em}
+}
+@media (max-width:880px){
+  .preview-tabs{padding:0 5px}
+  .preview-tabs .tab{padding:8px 6px;font-size:9.5px}
+}
+@media (max-width:680px){
+  .preview-tabs{padding:0 10px}
+  .preview-tabs .tab{padding:9px 12px;font-size:11px}
+}
