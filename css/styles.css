@@ -325,3 +325,24 @@
   .preview-tabs{padding:0 10px}
   .preview-tabs .tab{padding:9px 12px;font-size:11px}
 }
+
+/* Mobile header: room between the logo and the purchase button */
+@media (max-width:680px){
+  .topbar{padding:14px 18px;gap:14px}
+  .brandlock{gap:9px}
+  .lg-sym{height:20px}
+  .lg-word{height:15px}
+  .topcta{flex:0 0 auto;font-size:12.5px;padding:9px 14px;white-space:nowrap}
+}
+@media (max-width:420px){
+  .topbar{padding:12px 14px;gap:12px}
+  .brandlock{gap:7px}
+  .lg-sym{height:17px}
+  .lg-word{height:13px}
+  .topcta{font-size:12px;padding:8px 12px}
+}
+@media (max-width:360px){
+  .topbar{padding:11px 13px;gap:10px}
+  .lg-word{display:none}
+  .topcta{font-size:11.5px;padding:8px 11px}
+}
