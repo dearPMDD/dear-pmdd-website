@@ -349,3 +349,25 @@
   .lg-word{display:none}
   .topcta{font-size:11.5px;padding:8px 11px}
 }
+
+/* Hero headline: break before the italic phrase, not after it, so the line
+   reads "Spot patterns. Build". Wording and markup are untouched. */
+.hero-grid h1.headline em::before{content:"\A";white-space:pre}
+.hero-grid h1.headline em br{display:none}
+@media (min-width:1101px){.hero-grid h1.headline{font-size:clamp(52px,5.1vw,74px)}}
+/* Mobile lockup a touch larger, header height and button balance unchanged */
+@media (max-width:680px){
+  .topbar{padding:13px 18px}
+  .brandlock{gap:10px}
+  .lg-sym{height:25px}
+  .lg-word{height:18px}
+}
+@media (max-width:420px){
+  .brandlock{gap:8px}
+  .lg-sym{height:22px}
+  .lg-word{height:16px}
+}
+@media (max-width:360px){
+  .lg-sym{height:21px}
+  .lg-word{display:none}
+}
