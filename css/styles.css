@@ -309,9 +309,12 @@
 /* Responsive safety: never let author-set fixed box sizes break hero flow */
 .hero-grid .headline,.hero-grid .lede{width:auto!important;height:auto!important;max-width:100%}
 
-/* Hero decorative mark stays anchored to the right edge at all widths */
-.hero-grid .hero-ring{left:auto!important;top:-10px!important;right:-30px!important;width:min(66vw,880px)!important;height:auto!important}
-@media (max-width:1100px){.hero-grid .hero-ring{top:0!important;right:-20px!important;width:min(82vw,540px)!important}}
+/* Hero decorative mark: behind the hero content, bleeding past the viewport edge.
+   It sits inside .hero .wrap (a positioned, max-width container), so the right
+   offset is measured back out to the viewport edge: (100vw - wrap width) / 2. */
+.hero-grid .hero-ring{left:auto!important;top:-10px!important;right:calc((100% - 100vw)/2 - 30px)!important;width:min(66vw,880px)!important;height:auto!important;z-index:0!important}
+.hero-grid>*:not(.hero-ring){position:relative;z-index:1}
+@media (max-width:1100px){.hero-grid .hero-ring{top:0!important;right:calc((100% - 100vw)/2 - 20px)!important;width:min(82vw,540px)!important}}
 /* Sheet tabs shrink with the card instead of clipping the last tab */
 @media (max-width:1040px){
   .preview-tabs{padding:0 8px}
